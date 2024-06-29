@@ -5,13 +5,16 @@ date_default_timezone_set('Europe/London');
 //composer
 require_once __DIR__. '/vendor/autoload.php';
 
-//dotenv
+//Carbon datetime helper
+use Carbon\Carbon;
+
+//dotenv .env file helper
 $dotEnv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotEnv->load();
 
 $string = "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}";
 
-//RedBeanPHP
+//RedBeanPHP Mysql ORM helper
 require_once __DIR__.'/libs/rb.php';
 R::setup($string, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
 if (!R::testConnection()) {
@@ -19,9 +22,9 @@ if (!R::testConnection()) {
 }
 R::freeze(false);
 
-//twig
+//twig template helper
 $loader = new \Twig\Loader\FilesystemLoader('templates');
-
 $twig = new \Twig\Environment($loader, ['cache' => '/templates/cache']);
 
-session_start();
+//session starts if login successfully
+// session_start();
