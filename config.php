@@ -24,7 +24,7 @@ R::freeze(false);
 
 //twig template helper
 // $default = 'animated';
-$default = 'info';
+$default = 'default';
 $view = 'view/' . $default;
 
 $loader = new \Twig\Loader\FilesystemLoader($view);
