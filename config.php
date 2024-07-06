@@ -23,8 +23,10 @@ if (!R::testConnection()) {
 R::freeze(false);
 
 //twig template helper
-$loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig = new \Twig\Environment($loader, ['cache' => '/templates/cache']);
+// $default = 'animated';
+$default = 'info';
+$view = 'view/' . $default;
 
-//session starts if login successfully
-// session_start();
+$loader = new \Twig\Loader\FilesystemLoader($view);
+// $twig = new \Twig\Environment($loader, ['cache' => 'view/cache']);
+$twig = new \Twig\Environment($loader, ['cache' => false]);
